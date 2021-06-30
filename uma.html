@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+    <title>jQuery mobile Listview with drag and drop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="jquery.mobile.css" /> 
+<script src="jquery-1.8.2.js"></script> 
+<script src="jquery.mobile.js"></script>
+<script src="jquery-ui.js"></script>  
+</head>
+<body>
+<div data-role="page">
+
+  <div data-role="header">
+    <h1>Arrastre y suelte la capa para lograr la imagen deseada</h1>
+  </div>
+
+  <div data-role="content">  
+    <ul data-role="listview" data-inset="true" data-theme="d" id="lst">
+      <li data-role="list-divider">Capas</li>
+	  <li><img src="desierto.png" height="40px">Desierto</img></li>
+	  <li><img src="hierba.png" height="40px">Hierba</img></li>
+	  <li><img src="palma.png" height="40px">Palma</img></li>
+	  <li><img src="agua.png" height="40px">Agua</img></li>
+	  <li><img src="estanque.png" height="40px">Estanque</img></li>
+	  <li><img src="escorpion.png" height="40px">Escorpion</img></li>
+	  <li><img src="hombre.png" height="40px">Hombre</img></li>
+	  <li><img src="camello.png" height="40px">Camello</img></li>
+	  <li><img src="letrero.png" height="40px">Letrero</img></li>
+	  <li><img src="rocas.png" height="40px">Rocas</img></li>
+    </ul>
+
+  </div><!-- /content -->
+<script>
+$( document ).on( 'pageinit', function() {
+
+  $( "#lst" ).listview( "refresh" );
+    
+  $( "#lst" ).sortable();
+  $( "#lst" ).disableSelection();
+  $( "#lst" ).on( "sortstop", function() {
+    $( "#lst" ).listview( "refresh" );
+  });
+}); 
+</script>
+</div><!-- /page -->
+
+</body>
+</html>
