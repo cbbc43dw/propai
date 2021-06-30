@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Posicionamiento de capas</title>
+	<meta charset=utf-8 />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="jquery.mobile.css" /> 
+	<script src="jquery-1.8.2.js"></script> 
+	<script src="jquery.mobile.js"></script>
+	<script src="jquery-ui.js"></script>
+	<script src="jquery.ui.touch-punch.js"></script>
+	<style>
+#Desierto{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+}
+#Hierba{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+}
+#Palma{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 3;
+}
+#Agua{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 4;
+}
+#Estanque{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 5;
+}
+#Escorpion{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 6;
+}
+#Hombre{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 7;
+}
+#Camello{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 8;
+}
+#Letrero{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 9;
+}
+#Rocas{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+}
+</style>
+	<script>
+		//Drag and drop habilitado para touch
+		$('#widget').draggable();
+		//Da el atributo de drag and drop a la lista
+		$( document ).on( 'pageinit', function() {
+		  $( "#lst" ).listview( "refresh" );
+		  $( "#lst" ).sortable();
+		  $( "#lst" ).disableSelection();
+		  $( "#lst" ).on( "sortstop", function() {
+			$( "#lst" ).listview( "refresh" );
+		  });
+		}); 
+
+	
+		function ola()
+		{ i=0;
+		  $("li").each(function(){
+			i++;
+			document.getElementById($(this).text()).style.zIndex = i;
+		    });
+		}
+	</script>
+
+</head>
+<body>
+	<div data-role="page"  id="portada">
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#imagen" data-role="button" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Imagen resultante</a>
+			<h1>Arrastre y suelte la capa para lograr la imagen deseada</h1>
+        </div>
+		<div data-role="content">  
+			<ul data-role="listview" data-inset="true" data-theme="d" id="lst">
+				<li><img src="desierto.png" height="40px">Desierto</img></li>
+				<li><img src="hierba.png" height="40px">Hierba</img></li>
+				<li><img src="palma.png" height="40px">Palma</img></li>
+				<li><img src="agua.png" height="40px">Agua</img></li>
+				<li><img src="estanque.png" height="40px">Estanque</img></li>
+				<li><img src="escorpion.png" height="40px">Escorpion</img></li>
+				<li><img src="hombre.png" height="40px">Hombre</img></li>
+				<li><img src="camello.png" height="40px">Camello</img></li>
+				<li><img src="letrero.png" height="40px">Letrero</img></li>
+				<li><img src="rocas.png" height="40px">Rocas</img></li>
+			</ul>
+		</div><!-- content -->
+		<div data-role="footer" data-theme="b" data-position="fixed">
+		<button onclick="ola()">Procesar cambio</button>
+			<h3>CBBC Diseno Grafico</h3>
+		</div> 
+	</div><!-- portada -->
+	<div data-role="page"  id="imagen">
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#portada" data-role="button" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Capas</a>
+            <h1>Imagen final</h1>
+        </div>
+		<div data-role="content">
+		
+			<div id="Desierto">
+			
+				<img src="cdesierto.png" width=100% >
+			</div>
+			<div id="Hierba">
+				<img src="chierba.png" width=100% >
+			</div>
+			<div id="Palma">
+				<img src="cpalma.png" width=100% >
+			</div>
+			<div id="Agua">
+				<img src="cagua.png"width=100%  >
+			</div>
+			<div id="Estanque">
+				<img src="cestanque.png"width=100%  >
+			</div>
+			<div id="Escorpion">
+				<img src="cescorpion.png" width=100% >
+			</div>
+			<div id="Hombre">
+				<img src="chombre.png" width=100% >
+			</div>
+			<div id="Camello">
+				<img src="ccamello.png" width=100% >
+			</div>
+			<div id="Letrero">
+				<img src="cletrero.png" width=100% >
+			</div>
+			<div id="Rocas">
+				<img src="crocas.png" width=100% >
+			</div>
+		</div>
+		<div data-role="footer" data-theme="b" data-position="fixed">
+		
+			<h3>CBBC Diseno Grafico</h3>
+		</div>
+	</div>	
+</body>
+</html>
+
