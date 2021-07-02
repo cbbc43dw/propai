@@ -79,6 +79,19 @@
 		  top: 20px;
 		  z-index: 10;
 		}
+		/*
+		.ui-icon-myicon:after {
+	background-image: url("inetuser.png");
+	background-size: 18px 18px;
+}
+*/
+.ui-icon-myicon:after {
+	background-image: url("iconimg.svg");
+}
+/* Fallback */
+.ui-nosvg .ui-icon-myicon:after {
+	background-image: url("inetuser.png");
+}
  	</style>
 	<script type="text/javascript">
 		$( document ).on( 'pageinit', function() {
@@ -176,13 +189,24 @@
 				</div>
 		</div><!-- content -->
 		<div data-role="footer" data-theme="b" data-position="fixed">
-			<h3>CBBC Dise&ntilde;o Gr&aacute;fico</h3>
+					
+			<h3>CBBC Dise&ntilde;o Gr&aacute;fico - <img src="inetuser.png" height=20px align="top"></h3>
+			<button c1ass="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon">myicon</button>
 		</div> 
 	</div><!-- portada -->
 </body>
 </html>
 
-<!-- 	#portada {
+<!-- 	
+<button c1ass="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-myicon">myicon</button>
+
+
+.ui-icon-myicon:after {
+	background-image: url("iconimg.svg");
+	background-size: 18px 18px;
+}
+
+#portada {
 			height   : 100%;
 			margin     : 0;
 			padding    : 0;
