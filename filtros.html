@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simulador de filtros</title>
+	<link href="cbbc.ico" rel="shortcut icon" type="image/x-icon"/>
+	<meta charset=utf-8 />
+	<!--Caracteristicas para mobile -->
+	
+	<!--<link rel="stylesheet" href="jquery.mobile.css" /> 
+	<script type="text/javascript" src="jquery-1.8.2.js"></script> 
+	<script type="text/javascript" src="jquery.mobile.js"></script>
+	<script type="text/javascript" src="jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script> -->
+
+	
+<!--	<script type="text/javascript" src="jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script>-->
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+<script src="jquery-2.1.4.js"></script>
+<script src="jquery.mobile-1.4.5.min.js"></script>
+<script>
+//$( document ).on( "change", "#flip-1",  function( event, ui ) {
+// cambiarImagenJS(); 
+//} );
+
+$(function(){
+$("#flip-1").on("change", function(){
+if ($(this).val() == "off")
+{
+cimg1a(0);
+}
+else
+{
+cimg1a(1);
+}
+});
+});
+function cimg1a(cual){
+if (cual == 0)
+{
+//document.getElementById("img1-1").src="ej.png";
+$("#img1-1").attr("src","ej.png");
+}
+else
+{
+//document.getElementById("img1-1").src="ej1.png";
+$("#img1-1").attr("src","ej1.png");
+}
+  
+}
+
+//$( document ).on( "change", "#flip-2",  function( event, ui ) {
+// cambiarImagen2JS(); 
+//} );
+//function cambiarImagen2JS(){
+//  document.getElementById("imagen2").src="ej1.png";
+//}
+</script>
+</head>
+<body>
+<!--Pagina principal -->
+<div data-role="page" id="portada">
+	<div data-role="header">
+		<h1>Filtros de photoshop</h1>
+	</div>
+	<div data-role="main" class="ui-content">
+		<div data-role="collapsible-set" data-theme="a" data-content-theme="a">
+			<div data-role="collapsible" data-collapsed="false" data-theme="a">
+			   <h3>Instrucciones</h3>
+				<p>* Elija el filtro que quiera ver, para esto expanda la categoria a la que pertenece el filtro pulsando en el "+".</p>
+				<p>* Se abrira un dialogo con la imagen, active/desactive el filtro con el switch on/off.</p>
+				<p>* No se puede cambiar de imagen ya que esta app solo demuestra que hacen los filtros, no es un editor grafico..</p>
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Artistico</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst1">
+					<li><a href="#pagerror">Bordes a&ntilde;adidos...</a></li>
+					<li><a href="#pagerror">Color diluido...</a></li>
+					<li><a href="#pagerror">Cuarteado...</a></li>
+					<li><a href="#pagerror">Esp&aacute;tula...</a></li>
+					<li><a href="#pagerror">Esponja...</a></li>
+					<li><a href="#pagerror">Fresco...</a></li>
+					<li><a href="#pagerror">L&aacute;piz de color...</a></li>
+					<li><a href="#pagerror">Manchas...</a></li>
+					<li><a href="#pagerror">Pel&iacute;cula granulada...</a></li>
+					<li><a href="#pagerror">Pincel seco...</a></li>
+					<li><a href="#pagerror">Pinceladas...</a></li>
+					<li><a href="#pagerror">Pintar debajo...</a></li>
+					<li><a href="#pagerror">Plastificado...</a></li>
+					<li><a href="#pagerror">Resplandor de ne&oacute;n...</a></li>
+					<li><a href="#pagerror">Trazos pastel...</a></li>
+				</ul>
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Bosquejar</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst2">
+					<li><a href="#pagerror">Bajorrelieve...</a></li>
+					<li><a href="#pagerror">Bordes rasgados...</a></li>
+					<li><a href="#pagerror">Carboncillo...</a></li>
+					<li><a href="#pagerror">Cont&eacute; Crayon...</a></li>
+					<li><a href="#pagerror">Cromo...</a></li>
+					<li><a href="#pagerror">Escayola...</a></li>
+					<li><a href="#pagerror">Estilogr&aacute;fica...</a></li>
+					<li><a href="#pagerror">Fotocopia...</a></li>
+					<li><a href="#pagerror">Modelo de semitono...</a></li>
+					<li><a href="#pagerror">Papel con relieve...</a></li>
+					<li><a href="#pagerror">Papel h&uacute;medo...</a></li>
+					<li><a href="#pagerror">Reticulaci&oacute;n...</a></li>
+					<li><a href="#pagerror">Tap&oacute;n...</a></li>
+					<li><a href="#pagerror">Tiza y carboncillo...</a></li>
+				</ul>
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Desenfocar</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst3">
+					<li><a href="#pagerror">Desenfocar</a></li>
+					<li><a href="#pagerror">Desenfocar m&aacute;s</a></li>
+					<li><a href="#pagerror">Desenfoque de forma...</a></li>
+					<li><a href="#pagerror">Desenfoque de lente...</a></li>
+					<li><a href="#pagerror">Desenfoque de movimiento...</a></li>
+					<li><a href="#pagerror">Desenfoque de rect&aacute;ngulo...</a></li>
+					<li><a href="#pagerror">Desenfoque de superficie...</a></li>
+					<li><a href="#pagerror">Desenfoque gaussiano...</a></li>
+					<li><a href="#pagerror">Desenfoque radial...</a></li>
+					<li><a href="#pagerror">Desenfoque suavizado...</a></li>
+					<li><a href="#pagerror">Promediar</a></li>
+				</ul>
+			</div>
+
+			
+			<div data-role="collapsible" data-theme="b">
+				<h3>Distorsionar</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst4">
+					<li><a href="#pagerror">Coordenadas polares...</a></li>
+					<li><a href="#pagerror">Cristal...</a></li>
+					<li><a href="#pagerror">Desplazar...</a></li>
+					<li><a href="#pagerror">Distorsionar...</a></li>
+					<li><a href="#pagerror">Encoger...</a></li>
+					<li><a href="#pagerror">Esferizar...</a></li>
+					<li><a href="#pagerror">Molinete...</a></li>
+					<li><a href="#pagerror">Onda...</a></li>
+					<li><a href="#pagerror">Ondas marinas...</a></li>
+					<li><a href="#pagerror">Resplandor difuso...</a></li>
+					<li><a href="#pagerror">Rizo...</a></li>
+					<li><a href="#pagerror">Zigzag...</a></li>
+				</ul>				
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Enfocar</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst5">
+					<li><a href="#pagerror">Enfocar</a></li>
+					<li><a href="#pagerror">Enfocar bordes</a></li>
+					<li><a href="#pagerror">Enfocar m&aacute;s</a></li>
+					<li><a href="#pagerror">Enfoque suavizado...</a></li>
+					<li><a href="#pagerror">M&aacute;scara de enfoque...</a></li>
+				</ul>
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Estilizar</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
+					<li><a href="#pagerror">Azulejos...</a></li>
+					<li><a href="#pag1-1">Bordes resplandecientes...</a></li>
+					<li><a href="#pagerror">Difusi&oacute;n...</a></li>
+					<li><a href="#pagerror">Extrusi&oacute;n...</a></li>
+					<li><a href="#pagerror">Hallar bordes</a></li>
+					<li><a href="#pagerror">Relieve....</a></li>
+					<li><a href="#pagerror">Solarizar</a></li>
+					<li><a href="#pagerror">Trazar contorno...</a></li>
+					<li><a href="#pagerror">Viento</a></li>					
+				</ul>
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Interpretar</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
+					<li><a href="#pagerror">Destellos...</a></li>
+					<li><a href="#pagerror">Efectos de iluminaci&oacute;n...</a></li>
+					<li><a href="#pagerror">Fibras...</a></li>
+					<li><a href="#pagerror">Nubes</a></li>
+					<li><a href="#pagerror">Nubes de diferencia</a></li>
+				</ul>				
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Pixelizar</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
+					<li><a href="#pagerror">Cristalizar...</a></li>
+					<li><a href="#pagerror">Fragmento</a></li>
+					<li><a href="#pagerror">Grabado...</a></li>
+					<li><a href="#pagerror">Mosaico...</a></li>
+					<li><a href="#pagerror">Pinceladas</a></li>
+					<li><a href="#pagerror">Puntillista...</a></li>
+					<li><a href="#pagerror">Semitono de color</a></li>
+				</ul>				
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Ruido</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
+					<li><a href="#pagerror">A&ntilde;adir ruido...</a></li>
+					<li><a href="#pagerror">Destramar</a></li>
+					<li><a href="#pagerror">Mediana...</a></li>
+					<li><a href="#pagerror">Polvo y rascaduras...</a></li>
+					<li><a href="#pagerror">Reducir ruido...</a></li>
+				</ul>				
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Textura</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
+					<li><a href="#pagerror">Azulejo de mosaico...</a></li>
+					<li><a href="#pagerror">Granulado...</a></li>
+					<li><a href="#pagerror">Grietas...</a></li>
+					<li><a href="#pagerror">Retazos...</a></li>
+					<li><a href="#pagerror">Texturizar...</a></li>
+					<li><a href="#pagerror">Vidriera...</a></li>
+				</ul>				
+			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h1>Trazos de pincel</h1>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
+					<li><a href="#pagerror">Bordes acentuados...</a></li>
+					<li><a href="#pagerror">Contornos con tinta...</a></li>
+					<li><a href="#pagerror">Salpicaduras...</a></li>
+					<li><a href="#pagerror">Sombreado...</a></li>
+					<li><a href="#pagerror">Sumi-e...</a></li>
+					<li><a href="#pagerror">Trazos angulares...</a></li>
+					<li><a href="#pagerror">Trazos con spray...</a></li>
+					<li><a href="#pagerror">Trazos oscuros...</a></li>
+				</ul>			</div>
+			<div data-role="collapsible" data-theme="b">
+				<h3>Licuar</h3>
+				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
+					<li><a href="#pagerror">Deformar</a></li>
+					<li><a href="#pagerror">Reconstruir</a></li>
+					<li><a href="#pagerror">Molinete</a></li>
+					<li><a href="#pagerror">Desinflar</a></li>
+					<li><a href="#pagerror">Inflar</a></li>
+					<li><a href="#pagerror">Empujar</a></li>
+					<li><a href="#pagerror">Reflejar</a></li>
+					<li><a href="#pagerror">Turbulencia</a></li>
+				</ul>
+			</div>	
+		</div>						
+	</div>
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<h3>CBBC  - <img src="inetuser.png" height=20px align="top"></h3>
+	</div>
+</div> 
+<!--Pagina en construccion-->
+<div data-role="page" data-dialog="true" id="pagerror" data-theme="a" data-content-theme="a">
+	<div data-role="header">
+		<h1>En construccion</h1>
+	</div>
+	<div data-role="main" class="ui-content">
+		<p>Se esta trabajando en este aspecto, por favor sea paciente.</p>
+	</div>
+	<div data-role="footer">
+		<h1>Cbbc</h1>
+	</div>
+</div> 
+<!-- Incia aqui las paginas de los filtros -->
+<!-- Filtro 1-1 -->
+
+<div data-role="page" data-dialog="true" id="pag1-1" data-theme="a" >
+	<div data-role="header">
+		<h1>Bordes resplandecientes</h1>
+	</div>
+	<div data-role="main" class="ui-content" data-theme="a">
+		<p>Identifica los bordes de color y les añade una especie de luz de neón. Este filtro puede aplicarse de manera acumulativa.</p>
+		<img src="ej.png" id="img1-1" width=100%>
+		<label for="flip-1">Estado del filtro:</label>
+		<select name="flip-1" id="flip-1" data-role="slider">
+			<option value="off">Off</option>
+			<option value="on">On</option>
+		</select> 
+	</div>
+  	<div data-role="footer">
+		<h1>Cbbc</h1>
+	</div>
+</div> 
+
+
+</body>
+</html>
+
+<!--
+
+<div data-role="page" data-dialog="true" id="pagetwo">
+  <div data-role="header">
+    <h1>Filtro molinete</h1>
+  </div>
+  <div data-role="main" class="ui-content">
+    <p>Crea efectos de remolinos en la imagen</p>
+  <img src="eg.png" id="imagen" width=100%>
+<label for="flip-1">Select slider:</label>
+<select name="flip-11" id="flip-11" data-role="slider">
+	<option value="off">Off</option>
+	<option value="on">On</option>
+</select> 
+	
+  </div>
+  <div data-role="footer">
+    <h1>Footer Text In Dialog</h1>
+  </div>
+</div> 
+http://www.w3bai.com/es/jquerymobile/jquerymobile_pages.html
+https://demos.jquerymobile.com/1.1.1/
+http://jquery-manual.blogspot.com/2013/07/flip-switch-toggle-boton-de-estado.html
+https://github.com/jquery/jquery/issues/2871
+https://donnierock.com/2017/09/19/cambiar-el-src-de-una-imagen-con-javascript-o-jquery/
+https://helpx.adobe.com/es/photoshop/using/filter-effects-reference.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="pageone">
+  <div data-role="header">
+    <h1>Welcome To My Homepage</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Welcome!</p>
+    <a href="#pagetwo">Go to Dialog Page</a>
+  </div>
+
+  <div data-role="footer">
+    <h1>Footer Text</h1>
+  </div>
+</div> 
+
+<div data-role="page" data-dialog="true" id="pagetwo">
+  <div data-role="header">
+    <h1>I'm A Dialog Box!</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>The dialog box is different from a normal page, it is displayed on top of the current page and it will not span the entire width of the page. The dialog has also an icon of "X" in the header to close the box.</p>
+    <a href="#pageone">Go to Page One</a>
+  </div>
+
+  <div data-role="footer">
+    <h1>Footer Text In Dialog</h1>
+  </div>
+</div> 
+
+
+</body>
+</html>
+
+(form)
+
+(label for="flip-checkbox-1><rl")Flip toggle suitdu (he(|d>ux:<llal7el)
+
+(input type="zhe(klmx" datarmlk'Tlipswitch" nalle="flipr(he(kbox4" id="flipr(he(kboxd")
+(/fcrm)
+<div data-role="fieldcontain">
+        <label for="flip-5">Flip switch:</label>
+        <select name="flip-5" id="flip-5" data-role="slider" data-theme="c" data-track-theme="a">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+        </select>
+</div>
+
+$('select').slider();
+
+
+$( document ).on( "change", "#flip-checkbox",  function( event, ui ) {
+ alert("Flip    Switched"); 
+} );
+-->
