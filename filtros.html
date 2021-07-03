@@ -5,371 +5,273 @@
 	<link href="cbbc.ico" rel="shortcut icon" type="image/x-icon"/>
 	<meta charset=utf-8 />
 	<!--Caracteristicas para mobile -->
-	
-	<!--<link rel="stylesheet" href="jquery.mobile.css" /> 
-	<script type="text/javascript" src="jquery-1.8.2.js"></script> 
-	<script type="text/javascript" src="jquery.mobile.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="mois.min.css" />
+	<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+	<script src="jquery-2.1.4.js"></script>
+	<script src="jquery.mobile-1.4.5.min.js"></script>
+	<!--esto es para drag and dropzone
 	<script type="text/javascript" src="jquery-ui.js"></script>
-	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script> -->
-
-	
-<!--	<script type="text/javascript" src="jquery-ui.js"></script>
 	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script>-->
-	
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
-<script src="jquery-2.1.4.js"></script>
-<script src="jquery.mobile-1.4.5.min.js"></script>
-<script>
-//$( document ).on( "change", "#flip-1",  function( event, ui ) {
-// cambiarImagenJS(); 
-//} );
+	<script type="text/javascript">
+		var elfa=0
+		let losfiltros=[
+				["No disponible","img/fltr-no.png","Se esta trabajando en implementar la funcionalidad de este filtro, por favor sea paciente."],
+				["Bordes añadidos","img/fltr1a.png","Reduce el número de colores de una imagen (la posteriza) de acuerdo con la opción de posterización elegida y busca los bordes de la imagen y dibuja sobre ellos líneas negras. Las áreas extensas de la imagen tienen sombreado sencillo, mientras que aparecen detalles oscuros finos por toda la imagen."],
+				["Color diluido","img/fltr1b.png","Pinta la imagen con estilo de acuarela, simplificando los detalles y mediante un pincel mediano cargado de agua y color. En los lugares donde se producen cambios tonales significativos en los bordes, el filtro satura el color."],
+				["Cuarteado","img/fltr1c.png","Pinta una imagen como si estuviera hecha de trozos de papel de colores toscamente recortados. Las imágenes de alto contraste aparecen como siluetas, mientras que las imágenes de color se componen de varias capas de papel de color."],
+				["Espátula","img/fltr1d.png","Reduce detalles de una imagen para dar el efecto de un lienzo con una fina capa de pintura que revela la textura que hay debajo."],
+				["Esponja","img/fltr1e.png","Crea imágenes con áreas con mucha textura de contraste de color y simulación de efecto de pintura con esponja."],
+				["Fresco","img/fltr1f.png","Pinta la imagen con un estilo basto utilizando pinceladas cortas y redondeadas aplicadas precipitadamente."],
+				["Lápiz de color","img/fltr1g.png","Dibuja una imagen utilizando lápices de colores sobre un fondo sólido. Los bordes se mantienen y se les da una apariencia de sombreado irregular; el color de fondo sólido se muestra a través de las áreas más suaves."],
+				["Manchas","img/fltr1h.png","Suaviza una imagen utilizando trazos diagonales cortos para manchar las áreas más oscuras. Las áreas más claras se hacen más brillantes y pierden detalle."],
+				["Película granulada","img/fltr1i.png","Aplica un motivo igual a los tonos y medios tonos en sombra de una imagen. Un motivo más suave y saturado se añade a las áreas más claras. Este filtro es útil para eliminar las bandas que aparecen en las fusiones y unificar visualmente elementos de varios orígenes."],
+				["Pincel Seco","img/fltr1j.png","Pinta los bordes de la imagen utilizando una técnica de pincel seco (entre óleo y acuarela). El filtro simplifica la imagen al reducir su gama de colores a áreas de colores comunes."],
+				["Pinceladas","img/fltr1k.png","Le permite elegir entre varios tamaños (de 1 a 50) y tipos de pincel para crear un efecto pictórico. Los tipos de pincel son Simple, Rugosidad clara, Rugosidad oscura, Enfocado, Borroso y Destello."],
+				["Pintar debajo","img/fltr1l.png","Pinta la imagen sobre un fondo de textura y luego pinta la imagen final sobre ella."],
+				["Plastificado","img/fltr1m.png","Cubre la imagen con plástico brillante, lo que acentúa el detalle de la superficie."],
+				["Resplandor de Neón","img/fltr1n.png","Añade varios tipos de resplandores a los objetos de una imagen. Este filtro es útil a la hora de colorear una imagen al tiempo que suaviza su aspecto. Para seleccionar un color de resplandor, haga clic en el cuadro de resplandor y seleccione un color del Selector de color."],
+				["Trazos pastel","img/fltr1o.png","Aplica trazos pastel sobre un fondo de textura. En las áreas de color brillante, la tiza aparece gruesa y con poca textura; en las áreas más oscuras, la tiza aparece a retazos para descubrir la textura."],
+			]
+		//["No disponible","img/fltr-no.png","Descripción"],
 
-$(function(){
-$("#flip-1").on("change", function(){
-if ($(this).val() == "off")
-{
-cimg1a(0);
-}
-else
-{
-cimg1a(1);
-}
-});
-});
-function cimg1a(cual){
-if (cual == 0)
-{
-//document.getElementById("img1-1").src="ej.png";
-$("#img1-1").attr("src","ej.png");
-}
-else
-{
-//document.getElementById("img1-1").src="ej1.png";
-$("#img1-1").attr("src","ej1.png");
-}
-  
-}
-
-//$( document ).on( "change", "#flip-2",  function( event, ui ) {
-// cambiarImagen2JS(); 
-//} );
-//function cambiarImagen2JS(){
-//  document.getElementById("imagen2").src="ej1.png";
-//}
-</script>
+		function cimg(vid,vfltr,cual){
+			if (cual == 0) //Imagen original
+			{ $(vid).attr("src","img/fltr-ori.png"); }
+			else  //imagen filtrada
+			{ $(vid).attr("src",vfltr);}
+		}
+		function vfiltro(cual){
+			elfa=cual;
+			$("#elfn").html(losfiltros[cual][0]);
+			$("#elfd").html(losfiltros[cual][2]);
+			$("#flipx").val("off").flipswitch("refresh");
+		}
+		$(function(){
+			$("#flipx").on("change", function(){
+				if ($(this).val() == "off")
+				{ cimg("#imgx","",0);}
+				else
+				{ cimg("#imgx",losfiltros[elfa][1],1);}
+			});
+		});
+	</script>
 </head>
 <body>
 <!--Pagina principal -->
 <div data-role="page" id="portada">
-	<div data-role="header">
+	<div data-role="header" data-theme="d">
 		<h1>Filtros de photoshop</h1>
 	</div>
 	<div data-role="main" class="ui-content">
-		<div data-role="collapsible-set" data-theme="a" data-content-theme="a">
-			<div data-role="collapsible" data-collapsed="false" data-theme="a">
+		<div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+			<div data-role="collapsible" data-collapsed="false" data-theme="d">
 			   <h3>Instrucciones</h3>
 				<p>* Elija el filtro que quiera ver, para esto expanda la categoria a la que pertenece el filtro pulsando en el "+".</p>
 				<p>* Se abrira un dialogo con la imagen, active/desactive el filtro con el switch on/off.</p>
 				<p>* No se puede cambiar de imagen ya que esta app solo demuestra que hacen los filtros, no es un editor grafico..</p>
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Artistico</h3>
 				<ul data-role="listview" data-inset="true" data-theme="c" id="lst1">
-					<li><a href="#pagerror">Bordes a&ntilde;adidos...</a></li>
-					<li><a href="#pagerror">Color diluido...</a></li>
-					<li><a href="#pagerror">Cuarteado...</a></li>
-					<li><a href="#pagerror">Esp&aacute;tula...</a></li>
-					<li><a href="#pagerror">Esponja...</a></li>
-					<li><a href="#pagerror">Fresco...</a></li>
-					<li><a href="#pagerror">L&aacute;piz de color...</a></li>
-					<li><a href="#pagerror">Manchas...</a></li>
-					<li><a href="#pagerror">Pel&iacute;cula granulada...</a></li>
-					<li><a href="#pagerror">Pincel seco...</a></li>
-					<li><a href="#pagerror">Pinceladas...</a></li>
-					<li><a href="#pagerror">Pintar debajo...</a></li>
-					<li><a href="#pagerror">Plastificado...</a></li>
-					<li><a href="#pagerror">Resplandor de ne&oacute;n...</a></li>
-					<li><a href="#pagerror">Trazos pastel...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(1)">Bordes a&ntilde;adidos...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(2)">Color diluido...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(3)">Cuarteado...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(4)">Esp&aacute;tula...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(5)">Esponja...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(6)">Fresco...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(7)">L&aacute;piz de color...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(8)">Manchas...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(9)">Pel&iacute;cula granulada...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(10)">Pincel seco...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(11)">Pinceladas...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(12)">Pintar debajo...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(13)">Plastificado...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(14)">Resplandor de ne&oacute;n...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(15)">Trazos pastel...</a></li>
 				</ul>
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Bosquejar</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst2">
-					<li><a href="#pagerror">Bajorrelieve...</a></li>
-					<li><a href="#pagerror">Bordes rasgados...</a></li>
-					<li><a href="#pagerror">Carboncillo...</a></li>
-					<li><a href="#pagerror">Cont&eacute; Crayon...</a></li>
-					<li><a href="#pagerror">Cromo...</a></li>
-					<li><a href="#pagerror">Escayola...</a></li>
-					<li><a href="#pagerror">Estilogr&aacute;fica...</a></li>
-					<li><a href="#pagerror">Fotocopia...</a></li>
-					<li><a href="#pagerror">Modelo de semitono...</a></li>
-					<li><a href="#pagerror">Papel con relieve...</a></li>
-					<li><a href="#pagerror">Papel h&uacute;medo...</a></li>
-					<li><a href="#pagerror">Reticulaci&oacute;n...</a></li>
-					<li><a href="#pagerror">Tap&oacute;n...</a></li>
-					<li><a href="#pagerror">Tiza y carboncillo...</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst2">
+					<li><a href="#pagx" onclick="vfiltro(0)">Bajorrelieve...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Bordes rasgados...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Carboncillo...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Cont&eacute; Crayon...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Cromo...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Escayola...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Estilogr&aacute;fica...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Fotocopia...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Modelo de semitono...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Papel con relieve...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Papel h&uacute;medo...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Reticulaci&oacute;n...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Tap&oacute;n...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Tiza y carboncillo...</a></li>
 				</ul>
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Desenfocar</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst3">
-					<li><a href="#pagerror">Desenfocar</a></li>
-					<li><a href="#pagerror">Desenfocar m&aacute;s</a></li>
-					<li><a href="#pagerror">Desenfoque de forma...</a></li>
-					<li><a href="#pagerror">Desenfoque de lente...</a></li>
-					<li><a href="#pagerror">Desenfoque de movimiento...</a></li>
-					<li><a href="#pagerror">Desenfoque de rect&aacute;ngulo...</a></li>
-					<li><a href="#pagerror">Desenfoque de superficie...</a></li>
-					<li><a href="#pagerror">Desenfoque gaussiano...</a></li>
-					<li><a href="#pagerror">Desenfoque radial...</a></li>
-					<li><a href="#pagerror">Desenfoque suavizado...</a></li>
-					<li><a href="#pagerror">Promediar</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst3">
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfocar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfocar m&aacute;s</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfoque de forma...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfoque de lente...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfoque de movimiento...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfoque de rect&aacute;ngulo...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfoque de superficie...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfoque gaussiano...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfoque radial...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desenfoque suavizado...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Promediar</a></li>
 				</ul>
 			</div>
-
-			
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Distorsionar</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst4">
-					<li><a href="#pagerror">Coordenadas polares...</a></li>
-					<li><a href="#pagerror">Cristal...</a></li>
-					<li><a href="#pagerror">Desplazar...</a></li>
-					<li><a href="#pagerror">Distorsionar...</a></li>
-					<li><a href="#pagerror">Encoger...</a></li>
-					<li><a href="#pagerror">Esferizar...</a></li>
-					<li><a href="#pagerror">Molinete...</a></li>
-					<li><a href="#pagerror">Onda...</a></li>
-					<li><a href="#pagerror">Ondas marinas...</a></li>
-					<li><a href="#pagerror">Resplandor difuso...</a></li>
-					<li><a href="#pagerror">Rizo...</a></li>
-					<li><a href="#pagerror">Zigzag...</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst4">
+					<li><a href="#pagx" onclick="vfiltro(0)">Coordenadas polares...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Cristal...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desplazar...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Distorsionar...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Encoger...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Esferizar...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Molinete...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Onda...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Ondas marinas...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Resplandor difuso...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Rizo...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Zigzag...</a></li>
 				</ul>				
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Enfocar</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst5">
-					<li><a href="#pagerror">Enfocar</a></li>
-					<li><a href="#pagerror">Enfocar bordes</a></li>
-					<li><a href="#pagerror">Enfocar m&aacute;s</a></li>
-					<li><a href="#pagerror">Enfoque suavizado...</a></li>
-					<li><a href="#pagerror">M&aacute;scara de enfoque...</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst5">
+					<li><a href="#pagx" onclick="vfiltro(0)">Enfocar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Enfocar bordes</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Enfocar m&aacute;s</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Enfoque suavizado...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">M&aacute;scara de enfoque...</a></li>
 				</ul>
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Estilizar</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
-					<li><a href="#pagerror">Azulejos...</a></li>
-					<li><a href="#pag1-1">Bordes resplandecientes...</a></li>
-					<li><a href="#pagerror">Difusi&oacute;n...</a></li>
-					<li><a href="#pagerror">Extrusi&oacute;n...</a></li>
-					<li><a href="#pagerror">Hallar bordes</a></li>
-					<li><a href="#pagerror">Relieve....</a></li>
-					<li><a href="#pagerror">Solarizar</a></li>
-					<li><a href="#pagerror">Trazar contorno...</a></li>
-					<li><a href="#pagerror">Viento</a></li>					
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst6">
+					<li><a href="#pagx" onclick="vfiltro(0)">Azulejos...</a></li>
+					<li><a href="#pag6a">Bordes resplandecientes...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Difusi&oacute;n...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Extrusi&oacute;n...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Hallar bordes</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Relieve....</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Solarizar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Trazar contorno...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Viento</a></li>					
 				</ul>
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Interpretar</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
-					<li><a href="#pagerror">Destellos...</a></li>
-					<li><a href="#pagerror">Efectos de iluminaci&oacute;n...</a></li>
-					<li><a href="#pagerror">Fibras...</a></li>
-					<li><a href="#pagerror">Nubes</a></li>
-					<li><a href="#pagerror">Nubes de diferencia</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst7">
+					<li><a href="#pagx" onclick="vfiltro(0)">Destellos...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Efectos de iluminaci&oacute;n...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Fibras...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Nubes</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Nubes de diferencia</a></li>
 				</ul>				
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Pixelizar</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
-					<li><a href="#pagerror">Cristalizar...</a></li>
-					<li><a href="#pagerror">Fragmento</a></li>
-					<li><a href="#pagerror">Grabado...</a></li>
-					<li><a href="#pagerror">Mosaico...</a></li>
-					<li><a href="#pagerror">Pinceladas</a></li>
-					<li><a href="#pagerror">Puntillista...</a></li>
-					<li><a href="#pagerror">Semitono de color</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst8">
+					<li><a href="#pagx" onclick="vfiltro(0)">Cristalizar...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Fragmento</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Grabado...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Mosaico...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Pinceladas</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Puntillista...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Semitono de color</a></li>
 				</ul>				
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Ruido</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
-					<li><a href="#pagerror">A&ntilde;adir ruido...</a></li>
-					<li><a href="#pagerror">Destramar</a></li>
-					<li><a href="#pagerror">Mediana...</a></li>
-					<li><a href="#pagerror">Polvo y rascaduras...</a></li>
-					<li><a href="#pagerror">Reducir ruido...</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst9">
+					<li><a href="#pagx" onclick="vfiltro(0)">A&ntilde;adir ruido...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Destramar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Mediana...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Polvo y rascaduras...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Reducir ruido...</a></li>
 				</ul>				
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Textura</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
-					<li><a href="#pagerror">Azulejo de mosaico...</a></li>
-					<li><a href="#pagerror">Granulado...</a></li>
-					<li><a href="#pagerror">Grietas...</a></li>
-					<li><a href="#pagerror">Retazos...</a></li>
-					<li><a href="#pagerror">Texturizar...</a></li>
-					<li><a href="#pagerror">Vidriera...</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst10">
+					<li><a href="#pagx" onclick="vfiltro(0)">Azulejo de mosaico...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Granulado...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Grietas...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Retazos...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Texturizar...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Vidriera...</a></li>
 				</ul>				
 			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h1>Trazos de pincel</h1>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
-					<li><a href="#pagerror">Bordes acentuados...</a></li>
-					<li><a href="#pagerror">Contornos con tinta...</a></li>
-					<li><a href="#pagerror">Salpicaduras...</a></li>
-					<li><a href="#pagerror">Sombreado...</a></li>
-					<li><a href="#pagerror">Sumi-e...</a></li>
-					<li><a href="#pagerror">Trazos angulares...</a></li>
-					<li><a href="#pagerror">Trazos con spray...</a></li>
-					<li><a href="#pagerror">Trazos oscuros...</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst11">
+					<li><a href="#pagx" onclick="vfiltro(0)">Bordes acentuados...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Contornos con tinta...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Salpicaduras...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Sombreado...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Sumi-e...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Trazos angulares...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Trazos con spray...</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Trazos oscuros...</a></li>
 				</ul>			</div>
-			<div data-role="collapsible" data-theme="b">
+			<div data-role="collapsible" data-theme="d">
 				<h3>Licuar</h3>
-				<ul data-role="listview" data-inset="true" data-theme="c" id="lst6">
-					<li><a href="#pagerror">Deformar</a></li>
-					<li><a href="#pagerror">Reconstruir</a></li>
-					<li><a href="#pagerror">Molinete</a></li>
-					<li><a href="#pagerror">Desinflar</a></li>
-					<li><a href="#pagerror">Inflar</a></li>
-					<li><a href="#pagerror">Empujar</a></li>
-					<li><a href="#pagerror">Reflejar</a></li>
-					<li><a href="#pagerror">Turbulencia</a></li>
+				<ul data-role="listview" data-inset="true" data-theme="d" id="lst12">
+					<li><a href="#pagx" onclick="vfiltro(0)">Deformar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Reconstruir</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Molinete</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Desinflar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Inflar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Empujar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Reflejar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(0)">Turbulencia</a></li>
 				</ul>
 			</div>	
 		</div>						
 	</div>
-	<div data-role="footer" data-theme="a" data-position="fixed">
+	<div data-role="footer" data-theme="d" data-position="fixed">
 		<h3>CBBC  - <img src="inetuser.png" height=20px align="top"></h3>
 	</div>
 </div> 
-<!--Pagina en construccion-->
-<div data-role="page" data-dialog="true" id="pagerror" data-theme="a" data-content-theme="a">
+<!--================================================================================-->
+<!-- Pagina de los filtros -->
+<div data-role="page" data-dialog="true" id="pagx" data-theme="d" >
 	<div data-role="header">
-		<h1>En construccion</h1>
-	</div>
-	<div data-role="main" class="ui-content">
-		<p>Se esta trabajando en este aspecto, por favor sea paciente.</p>
-	</div>
-	<div data-role="footer">
-		<h1>Cbbc</h1>
-	</div>
-</div> 
-<!-- Incia aqui las paginas de los filtros -->
-<!-- Filtro 1-1 -->
-
-<div data-role="page" data-dialog="true" id="pag1-1" data-theme="a" >
-	<div data-role="header">
-		<h1>Bordes resplandecientes</h1>
+		<h1><label id="elfn">Filtro</label></h1>
 	</div>
 	<div data-role="main" class="ui-content" data-theme="a">
-		<p>Identifica los bordes de color y les añade una especie de luz de neón. Este filtro puede aplicarse de manera acumulativa.</p>
-		<img src="ej.png" id="img1-1" width=100%>
-		<label for="flip-1">Estado del filtro:</label>
-		<select name="flip-1" id="flip-1" data-role="slider">
-			<option value="off">Off</option>
+		<p><label id="elfd">Descripcion</label></p>
+		<img src="img/fltr-ori.png" id="imgx" width=100%>
+		<label for="flipx">Estado del filtro:</label>
+		<select name="flipx" id="flipx" data-role="flipswitch">
+			<option selected value="off">Off</option>
 			<option value="on">On</option>
 		</select> 
 	</div>
-  	<div data-role="footer">
-		<h1>Cbbc</h1>
+  	<div data-role="footer"  data-theme="d">
+		<h1><a href="#portada" data-role="button" data-inline="true">Salir</a></h1>
 	</div>
 </div> 
-
-
+<!--================================================================================-->
 </body>
 </html>
 
 <!--
+Referencias y codigo de ayuda
 
-<div data-role="page" data-dialog="true" id="pagetwo">
-  <div data-role="header">
-    <h1>Filtro molinete</h1>
-  </div>
-  <div data-role="main" class="ui-content">
-    <p>Crea efectos de remolinos en la imagen</p>
-  <img src="eg.png" id="imagen" width=100%>
-<label for="flip-1">Select slider:</label>
-<select name="flip-11" id="flip-11" data-role="slider">
-	<option value="off">Off</option>
-	<option value="on">On</option>
-</select> 
-	
-  </div>
-  <div data-role="footer">
-    <h1>Footer Text In Dialog</h1>
-  </div>
-</div> 
 http://www.w3bai.com/es/jquerymobile/jquerymobile_pages.html
 https://demos.jquerymobile.com/1.1.1/
 http://jquery-manual.blogspot.com/2013/07/flip-switch-toggle-boton-de-estado.html
 https://github.com/jquery/jquery/issues/2871
 https://donnierock.com/2017/09/19/cambiar-el-src-de-una-imagen-con-javascript-o-jquery/
 https://helpx.adobe.com/es/photoshop/using/filter-effects-reference.html
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-</head>
-<body>
 
-<div data-role="page" id="pageone">
-  <div data-role="header">
-    <h1>Welcome To My Homepage</h1>
-  </div>
-
-  <div data-role="main" class="ui-content">
-    <p>Welcome!</p>
-    <a href="#pagetwo">Go to Dialog Page</a>
-  </div>
-
-  <div data-role="footer">
-    <h1>Footer Text</h1>
-  </div>
-</div> 
-
-<div data-role="page" data-dialog="true" id="pagetwo">
-  <div data-role="header">
-    <h1>I'm A Dialog Box!</h1>
-  </div>
-
-  <div data-role="main" class="ui-content">
-    <p>The dialog box is different from a normal page, it is displayed on top of the current page and it will not span the entire width of the page. The dialog has also an icon of "X" in the header to close the box.</p>
-    <a href="#pageone">Go to Page One</a>
-  </div>
-
-  <div data-role="footer">
-    <h1>Footer Text In Dialog</h1>
-  </div>
-</div> 
-
-
-</body>
-</html>
-
-(form)
-
-(label for="flip-checkbox-1><rl")Flip toggle suitdu (he(|d>ux:<llal7el)
-
-(input type="zhe(klmx" datarmlk'Tlipswitch" nalle="flipr(he(kbox4" id="flipr(he(kboxd")
-(/fcrm)
-<div data-role="fieldcontain">
-        <label for="flip-5">Flip switch:</label>
-        <select name="flip-5" id="flip-5" data-role="slider" data-theme="c" data-track-theme="a">
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-        </select>
-</div>
-
-$('select').slider();
-
-
-$( document ).on( "change", "#flip-checkbox",  function( event, ui ) {
- alert("Flip    Switched"); 
-} );
 -->
