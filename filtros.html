@@ -114,6 +114,14 @@
 				["Trazos angulares","img/fltr11f-min.png","Vuelve a pintar una imagen mediante trazos diagonales y genera áreas más claras y más oscuras pintadas a trazos en direcciones opuestas."],
 				["Trazos con spray","img/fltr11g-min.png","Vuelve a pintar una imagen utilizando sus colores dominantes con trazos de spray de color angulares."],
 				["Trazos oscuros","img/fltr11h-min.png","Pinta áreas oscuras con trazos cortos, firmes y de colores oscuros; y las áreas claras con trazos largos y blancos."],
+				["Deformar","img/fltr12a.png","Esta herramienta arrastra los píxeles dentro de la malla en la misma dirección que movemos el cursor. Tiene un impacto más fuerte en el epicentro, pero pierde fuerza a medida que nos alejamos del punto central."],
+				["Reconstruir","img/fltr12b.gif","Restaura los ajustes de licuado realizados, llevando la imagen a su estado original."],
+				["Molinete","img/fltr12c.png","Gira la malla en dirección de las manillas del reloj. Al igual que en todas las herramientas, el epicentro es donde el efecto se aplica más fuerte. Si presionamos la tecla Alt mientras aplicamos el molinete, éste girará hacia la izquierda."],
+				["Desinflar","img/fltr12d.png"," Disminuye el tamaño del epicentro, doblando la malla hacia dentro. Arrastra los píxeles aledaños hacia el centro."],
+				["Inflar","img/fltr12e.png","Aumenta el tamaño del epicentro, doblando la malla hacia afuera. Estira la información de los píxeles interpolados, lo que genera pérdida de nitidez en texturas y bordes."],
+				["Empujar","img/fltr12f.png","Al moverse a la izquierda, lleva los píxeles del epicentro hacia la parte superior de la brocha. Al moverse a la derecha, lo hace del epicentro a la parte inferior. Al moverse hacia arriba, lo hace del epicentro a la izquierda. Al moverse hacia abajo, del epicentro a la derecha."],
+				["Reflejar","img/fltr12g.png","Descripción"],
+				["Turbulencia","img/fltr12h.png","Descripción"],
 			]
 		//["No disponible","img/fltr-no.png","Descripción"],
 
@@ -308,15 +316,19 @@
 				</ul>			</div>
 			<div data-role="collapsible" data-theme="d">
 				<h3>Licuar</h3>
+				<h4>Para acceder a la herramienta debemos seleccionar una capa con información, tras este paso podemos utilizar el comando de teclado Ctrl+Shift+X.<br>
+				También es posible acceder a esta capa en el menú superior yendo a Filtros > Licuar.<br>
+				Estos filtros no se pueden aplicar a una capa dinámica en la version Cs5 y ha sido mejorado y ofrece mass opciones en Cs6 y CC.<br>
+				Una vez aplicado el filtro ya no se puede remover. </h4>
 				<ul data-role="listview" data-inset="true" data-theme="d" id="lst12">
-					<li><a href="#pagx" onclick="vfiltro(0)">Deformar</a></li>
-					<li><a href="#pagx" onclick="vfiltro(0)">Reconstruir</a></li>
-					<li><a href="#pagx" onclick="vfiltro(0)">Molinete</a></li>
-					<li><a href="#pagx" onclick="vfiltro(0)">Desinflar</a></li>
-					<li><a href="#pagx" onclick="vfiltro(0)">Inflar</a></li>
-					<li><a href="#pagx" onclick="vfiltro(0)">Empujar</a></li>
-					<li><a href="#pagx" onclick="vfiltro(0)">Reflejar</a></li>
-					<li><a href="#pagx" onclick="vfiltro(0)">Turbulencia</a></li>
+					<li><a href="#pagx" onclick="vfiltro(98)">Deformar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(99)">Reconstruir</a></li>
+					<li><a href="#pagx" onclick="vfiltro(100)">Molinete</a></li>
+					<li><a href="#pagx" onclick="vfiltro(101)">Desinflar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(102)">Inflar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(103)">Empujar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(104)">Reflejar</a></li>
+					<li><a href="#pagx" onclick="vfiltro(105)">Turbulencia</a></li>
 				</ul>
 			</div>	
 		</div>						
