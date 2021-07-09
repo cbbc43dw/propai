@@ -12,15 +12,6 @@
 	<script src="jquery.mobile-1.4.5.min.js"></script>	
 	<script type="text/javascript" src="jquery-ui.js"></script>
 	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script>
-
-   
-
-<!--	
-	<link rel="stylesheet" href="jquery.mobile.css" /> 
-	<script type="text/javascript" src="jquery-1.8.2.js"></script> 
-	<script type="text/javascript" src="jquery.mobile.js"></script>
-	<script type="text/javascript" src="jquery-ui.js"></script>
-	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script> -->
 	<style>
 		#laimg
 		{position: relative	;
@@ -109,24 +100,11 @@
 			right:0;
 		  z-index: 1;
 		}
-		/*
-		.ui-icon-myicon:after {
-	background-image: url("inetuser.png");
-	background-size: 18px 18px;
-}
-*/
-.ui-icon-myicon:after {
-	background-image: url("iconimg.svg");
-}
-/* Fallback */
-.ui-nosvg .ui-icon-myicon:after {
-	background-image: url("inetuser.png");
-}
+		
  	</style>
 	<script type="text/javascript">
 		$( document ).on( 'pageinit', function() {
 		//$(document).ready(function(){
-		
 			$('#widget').draggable();
 			$( "#lst" ).listview( "refresh" );
 			$( "#lst" ).sortable();
@@ -141,9 +119,9 @@
 					{	$(this).css('background-color', '');}
 				else
 					{	$(this).css('background-color', 'mistyrose');}
+				muestra_oculta($(this).attr("id")+"v");
 			});
 		}); 
-		
 		function cola()
 		{ i=11; //modo pila, para modo cola usar i=0;
 		  $("li").each(function(){
@@ -151,7 +129,6 @@
 				document.getElementById($(this).text()).style.zIndex = i;
 		   });
 		}
-		
 		function muestra_oculta(id){
 			if (document.getElementById){ //se obtiene el id
 				var el = document.getElementById(id),cambia; //se define la variable "el" igual a nuestro div
@@ -172,7 +149,7 @@
 				<div data-role="collapsible" data-collapsed="false">
 				   <h3>Instrucciones</h3>
 					<p>* Para cambiar el orden de las capas: Arrastre y suelte la capa en la posición deseada.</p>
-					<p>* Para ocultar una capa haga un click sobre ella, el fondo del la capa cambiara a una tonalidad roja para indicar que no es visible.</p>
+					<p>* Para ocultar una capa haga un click sobre ella, el fondo del la capa cambiará a una tonalidad roja y desaparecerá el ojo para indicar que no es visible.</p>
 					<p>* Los cambios se aplican automaticamente sobre la imagen.</p>
 					<p>* No se puede cambiar las imagenes ya que esta app solo demuestra el manejo, no es un editor grafico.</p>
 					<p>* La velocidad de su internet afecta la presentacion de las imagenes.</p>
@@ -180,16 +157,16 @@
 				   	<div data-role="collapsible">
 						<h3>Capas</h3>
 						<ul data-role="listview" data-inset="true" data-theme="a" id="lst">
-							<li><img src="img/cdesierto-mix.png" height="40px">Desierto</img></li>
-							<li><img src="img/chierba-mix.png" height="40px">Hierba</img></li>
-							<li><img src="img/cpalma-mix.png" height="40px">Palma</img></li>
-							<li><img src="img/cagua-mix.png" height="40px">Agua</img></li>
-							<li><img src="img/cestanque-mix.png" height="40px">Estanque</img></li>
-							<li><img src="img/cescorpion-mix.png" height="40px">Escorpion</img></li>
-							<li><img src="img/chombre-mix.png" height="40px">Hombre</img></li>
-							<li><img src="img/ccamello-mix.png" height="40px">Camello</img></li>
-							<li><img src="img/cletrero-mix.png" height="40px">Letrero</img></li>
-							<li><img src="img/crocas-mix.png" height="40px">Rocas</img></li>
+							<li id="op1"><img src="img/cdesierto-mix.png" height="40px">Desierto</img><div id="op1v"><img src="img/vsi.png" height="30px"></div></li>
+							<li id="op2"><img src="img/chierba-mix.png" height="40px">Hierba</img><div id="op2v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op3"><img src="img/cpalma-mix.png" height="40px">Palma</img><div id="op3v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op4"><img src="img/cagua-mix.png" height="40px">Agua</img><div id="op4v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op5"><img src="img/cestanque-mix.png" height="40px">Estanque</img><div id="op5v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op6"><img src="img/cescorpion-mix.png" height="40px">Escorpion</img><div id="op6v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op7"><img src="img/chombre-mix.png" height="40px">Hombre</img><div id="op7v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op8"><img src="img/ccamello-mix.png" height="40px">Camello</img><div id="op8v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op9"><img src="img/cletrero-mix.png" height="40px">Letrero</img><div id="op9v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op10"><img src="img/crocas-mix.png" height="40px">Rocas</img><div id="op10v"><img src="img/vsi.png" height="30px"></li>
 						</ul>
                   </div>
 				</div>
