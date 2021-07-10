@@ -10,9 +10,6 @@
 	<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
 	<script src="jquery-2.1.4.js"></script>
 	<script src="jquery.mobile-1.4.5.min.js"></script>
-	<!--esto es para drag and dropzone
-	<script type="text/javascript" src="jquery-ui.js"></script>
-	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script>-->
 	<script type="text/javascript">
 		var elfa=0
 		let losfiltros=[
@@ -35,7 +32,7 @@
 				["Bajorrelieve","img/fltr2a-min.png","Transforma una imagen de manera que aparezca esculpida en bajorrelieve e iluminada para acentuar las variaciones de la superficie. Las áreas oscuras de la imagen toman el color frontal y las claras, el de fondo."],
 				["Bordes rasgados","img/fltr2b-min.png","Reconstruye la imagen para que dé la impresión de estar compuesta por trozos de papel desiguales y, a continuación, colorea la imagen con los colores frontal y de fondo. Este filtro resulta especialmente útil en objetos de texto o de gran contraste"],
 				["Carboncillo","img/fltr2c-min.png","Crea un efecto posterizado y manchado. Los bordes principales se dibujan en negrita y los medios tonos se bosquejan utilizando trazos diagonales. Carboncillo es el color frontal, mientras que el fondo es el color del papel."],
-				["Conté Crayon","img/fltr2-mind.png","Reproduce la textura de los pasteles Conté blancos puros y los oscuros densos de una imagen. El filtro Conté Crayon utiliza el color frontal en las áreas oscuras; y el de fondo, en las claras. Para lograr un efecto más real, cambie el color frontal por uno de los colores Conté Crayon comunes (negro, sepia o sanguina) antes de aplicar el filtro. Si desea obtener un efecto suavizado, cambie el color de fondo a blanco, añada parte del color frontal al fondo blanco y, a continuación, aplique el filtro."],
+				["Conté Crayon","img/fltr2d-min.png","Reproduce la textura de los pasteles Conté blancos puros y los oscuros densos de una imagen. El filtro Conté Crayon utiliza el color frontal en las áreas oscuras; y el de fondo, en las claras. Para lograr un efecto más real, cambie el color frontal por uno de los colores Conté Crayon comunes (negro, sepia o sanguina) antes de aplicar el filtro. Si desea obtener un efecto suavizado, cambie el color de fondo a blanco, añada parte del color frontal al fondo blanco y, a continuación, aplique el filtro."],
 				["Cromo","img/fltr2e-min.png","Interpreta la imagen como si tuviera una superficie de cromo pulido. Las iluminaciones son los puntos altos y las sombras, los puntos bajos en la superficie reflectante. Después de aplicar el filtro, utilice el cuadro de diálogo Niveles para añadir más contraste a la imagen."],
 				["Escayola","img/fltr2f-min.png","Moldea una imagen de escayola tridimensional y colorea el resultado utilizando el color frontal y el de fondo. Las áreas oscuras se elevan y las claras se hunden."],
 				["Estilográfica","img/fltr2g-min.png","Utiliza trazos de tinta finos y lineales para capturar los detalles de la imagen original. El efecto resulta asombroso en imágenes escaneadas. El filtro sustituye el color de la imagen original utilizando el color de primer plano para la tinta y el color de fondo para el papel."],
@@ -114,17 +111,16 @@
 				["Trazos angulares","img/fltr11f-min.png","Vuelve a pintar una imagen mediante trazos diagonales y genera áreas más claras y más oscuras pintadas a trazos en direcciones opuestas."],
 				["Trazos con spray","img/fltr11g-min.png","Vuelve a pintar una imagen utilizando sus colores dominantes con trazos de spray de color angulares."],
 				["Trazos oscuros","img/fltr11h-min.png","Pinta áreas oscuras con trazos cortos, firmes y de colores oscuros; y las áreas claras con trazos largos y blancos."],
-				["Deformar","img/fltr12a.png","Esta herramienta arrastra los píxeles dentro de la malla en la misma dirección que movemos el cursor. Tiene un impacto más fuerte en el epicentro, pero pierde fuerza a medida que nos alejamos del punto central."],
+				["Deformar","img/fltr12a-min.png","Esta herramienta arrastra los píxeles dentro de la malla en la misma dirección que movemos el cursor. Tiene un impacto más fuerte en el epicentro, pero pierde fuerza a medida que nos alejamos del punto central."],
 				["Reconstruir","img/fltr12b.gif","Restaura los ajustes de licuado realizados, llevando la imagen a su estado original."],
-				["Molinete","img/fltr12c.png","Gira la malla en dirección de las manillas del reloj. Al igual que en todas las herramientas, el epicentro es donde el efecto se aplica más fuerte. Si presionamos la tecla Alt mientras aplicamos el molinete, éste girará hacia la izquierda."],
-				["Desinflar","img/fltr12d.png"," Disminuye el tamaño del epicentro, doblando la malla hacia dentro. Arrastra los píxeles aledaños hacia el centro."],
-				["Inflar","img/fltr12e.png","Aumenta el tamaño del epicentro, doblando la malla hacia afuera. Estira la información de los píxeles interpolados, lo que genera pérdida de nitidez en texturas y bordes."],
-				["Empujar","img/fltr12f.png","Al moverse a la izquierda, lleva los píxeles del epicentro hacia la parte superior de la brocha. Al moverse a la derecha, lo hace del epicentro a la parte inferior. Al moverse hacia arriba, lo hace del epicentro a la izquierda. Al moverse hacia abajo, del epicentro a la derecha."],
-				["Reflejar","img/fltr12g.png","Descripción"],
-				["Turbulencia","img/fltr12h.png","Descripción"],
+				["Molinete","img/fltr12c-min.png","Gira la malla en dirección de las manillas del reloj. Al igual que en todas las herramientas, el epicentro es donde el efecto se aplica más fuerte. Si presionamos la tecla Alt mientras aplicamos el molinete, éste girará hacia la izquierda."],
+				["Desinflar","img/fltr12d-min.png"," Disminuye el tamaño del epicentro, doblando la malla hacia dentro. Arrastra los píxeles aledaños hacia el centro."],
+				["Inflar","img/fltr12e-min.png","Aumenta el tamaño del epicentro, doblando la malla hacia afuera. Estira la información de los píxeles interpolados, lo que genera pérdida de nitidez en texturas y bordes."],
+				["Empujar","img/fltr12f-min.png","Al moverse a la izquierda, lleva los píxeles del epicentro hacia la parte superior de la brocha. Al moverse a la derecha, lo hace del epicentro a la parte inferior. Al moverse hacia arriba, lo hace del epicentro a la izquierda. Al moverse hacia abajo, del epicentro a la derecha."],
+				["Reflejar","img/fltr12g-min.png","Descripción"],
+				["Turbulencia","img/fltr12h-min.png","Descripción"]
 			]
 		//["No disponible","img/fltr-no.png","Descripción"],
-
 		function cimg(vid,vfltr,cual){
 			if (cual == 0) //Imagen original
 			{ $(vid).attr("src","img/fltr-ori-min.png"); }
@@ -151,12 +147,13 @@
 <!--Pagina principal -->
 <div data-role="page" id="portada">
 	<div data-role="header" data-theme="d">
-		<h1>Filtros de photoshop</h1>
+		<h1>Photoshop: Filtros</h1>
 	</div>
 	<div data-role="main" class="ui-content">
 		<div data-role="collapsible-set" data-theme="d" data-content-theme="d">
 			<div data-role="collapsible" data-collapsed="false" data-theme="d">
 			   <h3>Instrucciones</h3>
+				<p>* Se simula la aplicación de los filtros de Adobe Photoshop Cs5.
 				<p>* Elija el filtro que quiera ver, para esto expanda la categoria a la que pertenece el filtro pulsando en el "+".</p>
 				<p>* Se abrira un dialogo con la imagen, active/desactive el filtro con el switch on/off.</p>
 				<p>* No se puede cambiar de imagen ya que esta app solo demuestra que hacen los filtros, no es un editor grafico.</p>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Division Sintetica</title>
+		<link href="img/cbbc.ico" rel="shortcut icon" type="image/x-icon">
+		<meta charset=utf-8>
+		<!--Caracteristicas para mobile -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="mois.min.css">
+		<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+		<script type="text/javascript" src="jquery-2.1.4.js"></script>
+		<script src="jquery.mobile-1.4.5.min.js"></script>	
+		<script type="text/javascript" src="jquery-ui.js"></script>
+		<script type="text/javascript" src="jquery.ui.touch-punch.js"></script>
+		<!--Mathjax
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		-->
+		<script type="text/javascript">
+		// Variables globales
+			var data = [];
+			function presenta(){
+				data[6]= document.getElementById("c").value;
+				data[0]= document.getElementById("x0").value;
+				data[1]= document.getElementById("x1").value;
+				data[2]= document.getElementById("x2").value;
+				data[3]= document.getElementById("x3").value;
+				data[4]= document.getElementById("x4").value;
+				data[5]= document.getElementById("x5").value;
+		
+				document.getElementById('vc').innerHTML = data[6];
+				document.getElementById('a0').innerHTML = data[0];
+				document.getElementById('a1').innerHTML = data[1];
+				document.getElementById('a2').innerHTML = data[2];
+				document.getElementById('a3').innerHTML = data[3];
+				document.getElementById('a4').innerHTML = data[4];
+				document.getElementById('a5').innerHTML = data[5];
+				
+				document.getElementById('b5').innerHTML = 0;
+				document.getElementById('b4').innerHTML = parseInt(data[6])*parseInt(data[5]);
+				document.getElementById('b3').innerHTML = parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]));
+				document.getElementById('b2').innerHTML = parseInt(data[6])*( parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]));
+				document.getElementById('b1').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]));
+				document.getElementById('b0').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]))+parseInt(data[1]));
+				
+				document.getElementById('c5').innerHTML = parseInt(data[5]);
+				document.getElementById('c4').innerHTML = parseInt(data[6])*parseInt(data[5])+parseInt(data[4]);
+				document.getElementById('c3').innerHTML = parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]);
+				document.getElementById('c2').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]);
+				document.getElementById('c1').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]))+parseInt(data[1]);
+				document.getElementById('c0').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]))+parseInt(data[1]))+parseInt(data[0]);
+			}
+		</script>
+	</head>
+	<body>
+		<div data-role="page"  id="portada">
+            <div data-role="header" data-theme="d" data-position="fixed">
+				<a href="#tabla" onclick="presenta()" data-role="button" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Resultado</a>
+                <h1>Matemáticas IV</h1>
+            </div>
+			<div data-role="content">
+				<div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+					<div data-role="collapsible" data-collapsed="false">
+						<h3>Datos de la division</h3>
+						<form id="dataForm">
+							<div data-role="fieldcontain">
+								<b>Ecuacion:&nbsp;a<sub>5</sub>x<sup>5</sup>+a<sub>4</sub>x<sup>4</sup>+a<sub>3</sub>x<sup>3</sup>+a<sub>2</sub>x<sup>2</sup>+a<sub>1</sub>x+a<sub>0</sub></b><br>
+								Coeficientes:<br>
+								<label for="x5">x<sup>5</sup></label><input type="range" name="x5" id="x5" max="20" min="-20" value="0" data-theme="d" data-track-theme="d"/>
+								<label for="x4">x<sup>4</sup></label><input type="range" name="x4" id="x4" max="20" min="-20" value="0" data-theme="d" data-track-theme="d"/>
+								<label for="x3">x<sup>3</sup></label><input type="range" name="x3" id="x3" max="20" min="-20" value="0" data-theme="d" data-track-theme="d"/>
+								<label for="x2">x<sup>2</sup></label><input type="range" name="x2" id="x2" max="20" min="-20" value="0" data-theme="d" data-track-theme="d"/>
+								<label for="x1">x</label><input type="range" name="x1" id="x1" max="20" min="-20" value="0" data-theme="d" data-track-theme="d"/>
+								<label for="x0">#</label><input type="range" name="x0" id="x0" max="20" min="-20" value="0" data-theme="d" data-track-theme="d"/>
+								Binomio de la forma (x-c)<br>
+								<label for="c">c</label><input type="range" name="c" id="c" max="20" min="-20" value="0" data-theme="d" data-track-theme="d"/>
+							</div>
+							<!--<input type="submit" name="submit" value="Salvar" />-->
+						</form>
+					</div>
+				   	<div data-role="collapsible">
+						<h3>Division sintetica</h3>
+						<p>Informacion sobre el procedimiento</p>
+						<img src="img/division.gif" width="350px">
+					</div>
+				</div>
+			</div>
+			<div data-role="footer" data-theme="d" data-position="fixed">
+				<h3>CBBC  - <img src="inetuser.png" height=20px align="top"></h3>
+			</div>
+		</div>
+<!-- Tabla de division sintetica -->
+		<div data-role="page" id="tabla" data-title="Resultado">
+			<div data-role="header" data-theme="d" data-position="fixed">
+				<a href="#portada" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Inicio</a>
+				<h1>Resultado</h1>
+			</div>
+			<div data-role="content"> 
+				<table border=0 width="300px">
+					<caption></caption>
+					<thead  >
+						<th colspan=7 style="border: 1px solid #999">
+							(a<sub>5</sub>x<sup>5</sup>+a<sub>4</sub>x<sup>4</sup>+a<sub>3</sub>x<sup>3</sup>+a<sub>2</sub>x<sup>2</sup>+a<sub>1</sub>x+a<sub>0</sub>)/(x-c)
+						</th>
+					</thead>
+					<tbody>
+						<tr>
+							<th ></th><th><h6>x<sup>5</sup></h6></th><th><h6>x<sup>4</sup></h6></th><th><h6>x<sup>3</sup></h6></th><th><h6>x<sup>2</sup></h6></th><th><h6>x</h6></th><th><h6><h6>#</h6></th>
+						</tr>
+						<tr>
+							<td  style="border-bottom: 1px solid #0000ff; border-right: 1px solid #0000ff;"><h5 id="vc">0</td>
+							<td  style="border-bottom: 1px solid #000; "><h5 id="a5">0</td>
+							<td style="border-bottom: 1px solid #000; "><h5 id="a4"></td>
+							<td style="border-bottom: 1px solid #000; "><h5 id="a3"></td>
+							<td  style="border-bottom: 1px solid #000; "><h5 id="a2"></td>
+							<td style="border-bottom: 1px solid #000; "><h5 id="a1"></td>
+							<td style="border-bottom: 1px solid #000; "><h5 id="a0"></td>
+						</tr>
+						<tr>
+							<td style=" border-right: 1px solid #000;"><h5 id="bc"></td>
+							<td><h5 id="b5">0</td>
+							<td><h5 id="b4"></td>
+							<td><h5 id="b3"></td>
+							<td><h5 id="b2"></td>
+							<td><h5 id="b1"></td>
+							<td><h5 id="b0"></td>
+						</tr>
+						<tr>
+							<td style=" border-right: 1px solid #000;border-top: 1px solid #000;"><h5 id="cc">0</td>
+							<td  bgcolor="#bbd1ea" style="border-top: 1px solid #000;"><h5 id="c5">0</td>
+							<td  bgcolor="#bbd1ea"  style="border-top: 1px solid #000;"><h5 id="c4"></td>
+							<td  bgcolor="#bbd1ea"  style="border-top: 1px solid #000;"><h5 id="c3"></td>
+							<td  bgcolor="#bbd1ea"  style="border-top: 1px solid #000;"><h5 id="c2"></td>
+							<td  bgcolor="#bbd1ea"  style="border-top: 1px solid #000;"><h5 id="c1"></td>
+							<td style="border: 1px solid #ff0000;"><h5 id="c0"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><h6>x<sup>4</sup></h6></td>
+							<td><h6>x<sup>3</sup></h6></td>
+							<td><h6>x<sup>2</sup></h6></td>
+							<td><h6>x</td>
+							<td><h6>#</h6></td>
+							<td><h6>Residuo</h6></td>
+						</tr>
+					</tbody>
+					<tfoot>
+					</tfoot>
+				</table>
+				<br>
+			</div>
+			<div data-role="footer" data-theme="d" data-position="fixed">
+				<h3>CBBC  - <img src="inetuser.png" height=20px align="top"></h3>
+			</div>
+		</div>
+	</body>
+</html>
